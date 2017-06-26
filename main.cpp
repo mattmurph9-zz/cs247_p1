@@ -9,9 +9,14 @@ private:
 	std::vector<Card*> cards_;
 public:
 	Deck();
+	Card* GetCardAt(int index);
 	void shuffle();
 	void print();
 };
+
+Card* Deck::GetCardAt(int index) {
+	return cards_[index];
+}
 
 int seed = 0;
 const int CARD_COUNT = 52;
@@ -52,19 +57,35 @@ Deck::Deck() {
 
 class Player {
 public:
-	std::vector<Card> LegalPlays();
-	virtual void Discard(Card cardName)=0; //ComputerPlayer will always discard first card, HumanPlayer can choose which card to discard
-	virtual void PlayCard(Card cardName)=0; //ComputerPlayer will always play first legal card, HumanPlayer can choose among legal plays
-private:
-	std::vector<Card> hand;
+	Player();
+	std::vector<Card*> LegalPlays();
+	void GetCards(int i, Deck deck);
+	virtual void Discard(Card card)=0; //ComputerPlayer will always discard first card, HumanPlayer can choose which card to discard
+	virtual void PlayCard(Card card)=0; //ComputerPlayer will always play first legal card, HumanPlayer can choose among legal plays
+protected:
+	std::vector<Card*> hand;
 };
+
+void Player::GetCards(int player, Deck deck) {
+	for (int i = 0; i < 13; i++) {
+		hand.push_back(deck.GetCardAt(player*13+i));
+	}
+}
 
 class HumanPlayer : public Player {
 public:
 	HumanPlayer();
-	void Discard(Card cardName) override;
-	void PlayCard(Card cardName) override;
+	void Discard(Card card) override;
+	void PlayCard(Card card) override;
 };
+
+void HumanPlayer::Discard(Card card) {
+	for (int i = 0; i < hand.size(); i++) {
+		if (*hand[i] == card) {
+			hand.erase(hand.begin() + i);
+		}
+	}
+}
 
 class ComputerPlayer : public Player {
 public:
@@ -72,6 +93,11 @@ public:
 	void Discard(Card cardName) override;
 	void PlayCard(Card cardName) override;
 };
+
+void ComputerPlayer::Discard(Card cardName) {
+	//ComputerPlayer must always discard first card in hand
+	hand.erase(hand.begin() + 0);
+}
 
 void playStraights()
 {	
