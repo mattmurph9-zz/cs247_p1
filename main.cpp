@@ -1,22 +1,27 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Deck.h"
+#include "Game.h"
 
 void playStraights()
 {	
 	Deck deck;
 	deck.shuffle();
 	deck.print();
-	std::string p1n, p2n, p3n, p4n;
-	std::cout << "Is player 1 a human(h) or a computer(c)?"<<std::endl;
-	std::cin >> p1n;
-	std::cout << "Is player 2 a human(h) or a computer(c)?" << std::endl;
-	std::cin >> p2n;
-	std::cout << "Is player 3 a human(h) or a computer(c)?" << std::endl;
-	std::cin >> p3n;
-	std::cout << "Is player 4 a human(h) or a computer(c)?" << std::endl;
-	std::cin >> p4n;
 
+	Game gameInstance;
+	// instantiating players
+	for (int i = 0; i < 4; i++) {
+		std::string in;
+		std::cout << "Is player " << i << " a human(h) or a computer(c)?" <<std::endl;
+		std::cin >> in;
+		if (in.compare("h") == 0) {
+			gameInstance.addHumanPlayer();
+		} else if (in.compare("c") == 0) {
+			gameInstance.addComputerPlayer();
+		}
+	}
 }
 
 int main(int argc, char* argv[]) 
