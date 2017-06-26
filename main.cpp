@@ -31,10 +31,12 @@ void Deck::shuffle() {
 } // shuffle
 
 void Deck::print() {
-	for (int i = 0; i < 51; i++) {
-		std::cout << cards_[i]<<" ";
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 12; j++) {
+			std::cout << *cards_[i*13+j] << " ";
+		}
+		std::cout << *cards_[i*13+12] << std::endl;
 	}
-	std::cout << cards_[51] << std::endl;
 }
 
 Deck::Deck() {
