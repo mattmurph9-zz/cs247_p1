@@ -5,6 +5,8 @@
 #include "Deck.h"
 
 class Player {
+private:
+	int score = 0;
 public:
 	Player();
 	std::vector<Card*> LegalPlays();
