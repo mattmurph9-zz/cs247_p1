@@ -22,6 +22,10 @@ void playStraights()
 			gameInstance.addComputerPlayer();
 		}
 	}
+
+	//dealing cards
+	deck.deal(gameInstance.players());
+
 }
 
 int main(int argc, char* argv[]) 

@@ -10,10 +10,12 @@
  */
 class Game {
 private:
-	std::vector<std::shared_ptr<Player>> players;
+	std::vector<std::shared_ptr<Player>> players_;
+	std::vector<Card*> playedCards;
 public:
 	void addHumanPlayer();
 	void addComputerPlayer();
+	std::vector<std::shared_ptr<Player>> players();
 };
 
 #endif
