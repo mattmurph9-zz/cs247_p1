@@ -11,9 +11,11 @@
 class Game {
 private:
 	std::vector<std::shared_ptr<Player>> players;
-public:
+	void initPlayers();
 	void addHumanPlayer();
 	void addComputerPlayer();
+public:
+	void startGame();
 	std::shared_ptr<Player> GetPlayer(int playerNum);
 };
 
