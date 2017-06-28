@@ -5,7 +5,7 @@
 
 class HumanPlayer : public Player {
 public:
-	HumanPlayer();
+	//HumanPlayer();
 	void Discard(Card card) override;
 	void PlayCard(Card card) override;
 };

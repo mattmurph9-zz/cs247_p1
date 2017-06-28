@@ -8,7 +8,7 @@ class Player {
 private:
 	int score = 0;
 public:
-	Player();
+	//Player();
 	std::vector<Card*> LegalPlays();
 	void GetCards(int i, Deck deck);
 	virtual void Discard(Card card) = 0; //ComputerPlayer will always discard first card, HumanPlayer can choose which card to discard
