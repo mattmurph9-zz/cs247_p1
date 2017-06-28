@@ -3,14 +3,14 @@
 #include "ComputerPlayer.h"
 
 void Game::addHumanPlayer() {
-	players_.push_back(std::shared_ptr<HumanPlayer>());
+	players.push_back(std::make_shared<HumanPlayer>());
 }
 
 void Game::addComputerPlayer() {
-	players_.push_back(std::shared_ptr<ComputerPlayer>());
+	players.push_back(std::make_shared<ComputerPlayer>());
 }
 
-std::vector<std::shared_ptr<Player>> Game::players()
+std::shared_ptr<Player> Game::GetPlayer(int playerNum)
 {
-	return players_;
+	return players[playerNum];
 }

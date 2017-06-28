@@ -5,7 +5,7 @@
 
 class ComputerPlayer : public Player {
 public:
-	ComputerPlayer();
+	//ComputerPlayer();
 	void Discard(Card cardName) override;
 	void PlayCard(Card cardName) override;
 };
