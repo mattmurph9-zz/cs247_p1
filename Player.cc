@@ -11,3 +11,7 @@ void Player::GetCards(int player, Deck deck) {
 		hand.push_back(card);
 	}
 }
+
+std::vector<Card> Player::getDiscards() {
+	return discards;
+}
