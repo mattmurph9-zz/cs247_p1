@@ -40,3 +40,7 @@ Deck::Deck() {
 		}
 	}
 }
+
+void setSeed(int s) {
+	seed = s;
+}

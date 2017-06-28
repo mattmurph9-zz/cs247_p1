@@ -26,5 +26,8 @@ void playStraights()
 
 int main(int argc, char* argv[]) 
 {
+	if (argc == 2) {
+		setSeed(atoi(argv[1]));
+	}
 	playStraights();
 }

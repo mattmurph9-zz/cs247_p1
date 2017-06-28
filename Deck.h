@@ -14,4 +14,6 @@ public:
 	void print();
 };
 
+void setSeed(int s);
+
 #endif
