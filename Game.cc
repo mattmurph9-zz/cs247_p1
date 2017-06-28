@@ -3,9 +3,9 @@
 #include "ComputerPlayer.h"
 
 void Game::addHumanPlayer() {
-	players.push_back(std::shared_ptr<HumanPlayer>());
+	players.push_back(std::make_shared<HumanPlayer>());
 }
 
 void Game::addComputerPlayer() {
-	players.push_back(std::shared_ptr<ComputerPlayer>());
+	players.push_back(std::make_shared<ComputerPlayer>());
 }
