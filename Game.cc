@@ -8,6 +8,17 @@
 void Game::startGame() {
 	initPlayers();
 
+	// deck is preserved throughout rounds. the shuffled deck from a round
+	// is the starting deck for the next
+	Deck deck;
+	deck.shuffle();
+	deck.print();
+
+	// deal
+	for (int i = 0; i < 4; i++) {
+		players[i]->GetCards(i, deck);
+	}
+
 	Round roundInstance(players);
 	roundInstance.startRound();
 }
