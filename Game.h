@@ -14,6 +14,7 @@ private:
 public:
 	void addHumanPlayer();
 	void addComputerPlayer();
+	std::shared_ptr<Player> GetPlayer(int playerNum);
 };
 
 #endif

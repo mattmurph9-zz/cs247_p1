@@ -9,3 +9,8 @@ void Game::addHumanPlayer() {
 void Game::addComputerPlayer() {
 	players.push_back(std::make_shared<ComputerPlayer>());
 }
+
+std::shared_ptr<Player> Game::GetPlayer(int playerNum)
+{
+	return players[playerNum];
+}
