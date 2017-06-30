@@ -12,6 +12,30 @@ void Player::GetCards(int player, Deck deck) {
 	}
 }
 
+//void Player::Discard(Card card) {
+//	discards.push_back(card);
+//	// rank indexing starts at zero, but points start at 1
+//	score += card.rank().rank() + 1;
+//	// remove from hand
+//	for (int i = 0; i < hand.size(); i++) {
+//		if (*hand[i] == card) {
+//			hand.erase(hand.begin() + i);
+//		}
+//	}
+//}
+
+void Player::queryTurn(std::vector<Card> legalPlays) {
+
+}
+
 std::vector<Card> Player::getDiscards() {
 	return discards;
+}
+
+std::vector<Card> Player::getHand() {
+	std::vector<Card> ret;
+	for (int i = 0; i < hand.size(); i++) {
+		ret.push_back(*hand[i]);
+	}
+	return ret;
 }
