@@ -1,5 +1,6 @@
 #include "Round.h"
 #include "Deck.h"
+#include "Player.h"
 #include <ostream>
 
 Round::Round(std::vector<std::shared_ptr<Player>> gamePlayers) :players(gamePlayers) {
@@ -33,7 +34,7 @@ void Round::startRound() {
 			} else {
 				legalPlays = computeLegalPlays(currentPlayer->getHand());
 			}
-			currentPlayer->queryTurn(legalPlays);
+			currentPlayer->queryTurn(*this, legalPlays);
 		}
 	}
 	// the round is over
@@ -62,6 +63,9 @@ std::vector<Card> Round::computeLegalPlays(std::vector<Card> hand) {
 	return legalPlays;
 }
 
+/**
+ * Helper for creating the list of legal plays
+ */
 void Round::addUniqueCard(std::vector<Card>& cards, Card card) {
 	bool hasCard = false;
 	for (int i = 0; i < cards.size(); i++) {
@@ -92,6 +96,18 @@ bool Round::checkRankPlayed(Card card) {
 		}
 	}
 	return false;
+}
+
+void Round::playCard(Card card) {
+	int suit = card.suit().suit();
+	int rank = card.rank().rank();
+	std::vector<Card>& suitsPlayed = cardsPlayed[suit];
+	// add card to appropriate suit played in order (insertion sort)
+	int i = 0;
+	while (i < suitsPlayed.size() && suitsPlayed[i].rank().rank() < rank ) {
+		i++;
+	}
+	suitsPlayed.insert(suitsPlayed.begin() + i, card);
 }
 
 /**

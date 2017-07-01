@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Round.h"
 
 void Player::GetCards(int player, Deck deck) {
 	for (int i = 0; i < 13; i++) {
@@ -12,20 +13,27 @@ void Player::GetCards(int player, Deck deck) {
 	}
 }
 
-//void Player::Discard(Card card) {
-//	discards.push_back(card);
-//	// rank indexing starts at zero, but points start at 1
-//	score += card.rank().rank() + 1;
-//	// remove from hand
-//	for (int i = 0; i < hand.size(); i++) {
-//		if (*hand[i] == card) {
-//			hand.erase(hand.begin() + i);
-//		}
-//	}
-//}
+void Player::Discard(Card card) {
+	discards.push_back(card);
+	// rank indexing starts at zero, but points start at 1
+	score += card.rank().rank() + 1;
+	// remove from hand
+	removeFromHand(card);
+}
 
-void Player::queryTurn(std::vector<Card> legalPlays) {
+void Player::play(Round roundInstance, Card card) {
+	// plays to round
+	roundInstance.playCard(card);
+	// remove from hand
+	removeFromHand(card);
+}
 
+void Player::removeFromHand(Card card) {
+	for (int i = 0; i < hand.size(); i++) {
+		if (*hand[i] == card) {
+			hand.erase(hand.begin() + i);
+		}
+	}
 }
 
 std::vector<Card> Player::getDiscards() {

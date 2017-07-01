@@ -3,8 +3,9 @@
 
 #include <vector>
 #include <memory>
-#include "Player.h"
 #include "Card.h"
+
+class Player;
 
 class Round {
 private:
@@ -19,6 +20,7 @@ public:
 	Round(std::vector<std::shared_ptr<Player>> players);
 	void startRound();
 	void printStatus();
+	void playCard(Card card);
 };
 
 #endif

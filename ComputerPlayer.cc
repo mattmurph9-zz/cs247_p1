@@ -1,10 +1,13 @@
 #include "ComputerPlayer.h"
+#include "Round.h"
 
-void ComputerPlayer::Discard(Card cardName) {
-	//ComputerPlayer must always discard first card in hand
-	hand.erase(hand.begin() + 0);
-}
-
-void ComputerPlayer::PlayCard(Card card) {
-
+/**
+ * Handles player logic to decide what to do
+ */
+void ComputerPlayer::queryTurn(Round roundInstance, std::vector<Card> legalPlays) {
+	if (legalPlays.empty()) {
+		Discard(*hand.front());
+	} else {
+		play(roundInstance, legalPlays.front());
+	}
 }

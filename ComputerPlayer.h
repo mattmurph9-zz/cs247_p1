@@ -6,8 +6,9 @@
 class ComputerPlayer : public Player {
 public:
 	//ComputerPlayer();
-	void Discard(Card cardName) override;
-	void PlayCard(Card cardName) override;
+	//void Discard(Card cardName) override;
+	//void PlayCard(Card cardName) override;
+	void queryTurn(Round roundInstance, std::vector<Card> legalPlays) override;
 };
 
 #endif
