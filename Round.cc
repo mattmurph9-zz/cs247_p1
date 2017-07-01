@@ -19,6 +19,8 @@ void Round::startRound() {
 		for (int j = 0, z = players.size(); j < z; j++) {
 			int currentPlayerI = (playerToStart + j) % z;
 			std::shared_ptr<Player> currentPlayer = players[currentPlayerI];
+			//assume player is human: print current state of round
+			printStatus();
 			// find out what player wants to do
 			std::vector<Card> legalPlays;
 			if (currentPlayerI == playerToStart) {
@@ -92,9 +94,11 @@ bool Round::checkRankPlayed(Card card) {
  * played.
  */
 void Round::printSuitPlayed(int suit) {
-	std::vector<Card> toPrint = cardsPlayed[suit];
-	for (int i = 0; i < toPrint.size(); i++) {
-		std::cout << " " << toPrint[i].rank().rank();
+	if (cardsPlayed.size() > 0) {
+		std::vector<Card> toPrint = cardsPlayed[suit];
+		for (int i = 0; i < toPrint.size(); i++) {
+			std::cout << " " << toPrint[i].rank().rank();
+		}
 	}
 }
 

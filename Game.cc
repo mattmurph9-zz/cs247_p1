@@ -27,7 +27,7 @@ void Game::initPlayers() {
 	// instantiating players
 	for (int i = 0; i < 4; i++) {
 		std::string in;
-		std::cout << "Is player " << i << " a human(h) or a computer(c)?" << std::endl;
+		std::cout << "Is player " << i+1 << " a human(h) or a computer(c)?" << std::endl;
 		std::cin >> in;
 		if (in.compare("h") == 0) {
 			addHumanPlayer();
