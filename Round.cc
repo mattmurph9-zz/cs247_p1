@@ -1,7 +1,8 @@
+#include <ostream>
 #include "Round.h"
 #include "Deck.h"
 #include "Player.h"
-#include <ostream>
+#include "Controller.h"
 
 Round::Round(std::vector<std::shared_ptr<Player>> gamePlayers) :players(gamePlayers) {
 	// initialize each suit's cards played
@@ -119,9 +120,7 @@ void Round::playCard(Card card) {
  */
 void Round::printSuitPlayed(int suit) {
 	std::vector<Card> toPrint = cardsPlayed[suit];
-	for (int i = 0; i < toPrint.size(); i++) {
-		std::cout << " " << toPrint[i].rank().rank();
-	}
+	Controller::printRanks(toPrint);
 }
 
 void Round::printStatus() {

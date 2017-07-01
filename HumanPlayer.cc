@@ -12,7 +12,7 @@
 bool HumanPlayer::queryTurn(Round roundInstance, std::vector<Card> legalPlays) {
 	bool validPlayMade = false;
 	while (!validPlayMade) {
-	// request UI for command input
+		// request UI for command input
 		Command playerCommand = Controller::queryCommand();
 		std::vector<Card> playerHand = getHand();
 
