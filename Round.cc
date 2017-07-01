@@ -25,8 +25,7 @@ void Round::startRound() {
 		for (int j = 0, z = players.size(); j < z; j++) {
 			int currentPlayerI = (playerToStart + j) % z;
 			std::shared_ptr<Player> currentPlayer = players[currentPlayerI];
-			//assume player is human: print current state of round
-			printStatus();
+
 			// find out what player wants to do
 			std::vector<Card> legalPlays;
 			if (currentPlayerI == playerToStart) {
@@ -34,7 +33,11 @@ void Round::startRound() {
 			} else {
 				legalPlays = computeLegalPlays(currentPlayer->getHand());
 			}
-			currentPlayer->queryTurn(*this, legalPlays);
+			bool turnComplete = currentPlayer->queryTurn(*this, legalPlays);
+			// in case of ragequit
+			if (!turnComplete) {
+				currentPlayer->queryTurn(*this, legalPlays);
+			}
 		}
 	}
 	// the round is over
