@@ -2,7 +2,12 @@
 #include "Deck.h"
 #include <ostream>
 
-Round::Round(std::vector<std::shared_ptr<Player>> gamePlayers) :players(gamePlayers) {}
+Round::Round(std::vector<std::shared_ptr<Player>> gamePlayers) :players(gamePlayers) {
+	// initialize each suit's cards played
+	for (int i = 0; i < Card::Suit::MAX_SUIT; i++) {
+		cardsPlayed.push_back(std::vector<Card>());
+	}
+}
 
 void Round::startRound() {
 	// general play begins
@@ -94,11 +99,9 @@ bool Round::checkRankPlayed(Card card) {
  * played.
  */
 void Round::printSuitPlayed(int suit) {
-	if (cardsPlayed.size() > 0) {
-		std::vector<Card> toPrint = cardsPlayed[suit];
-		for (int i = 0; i < toPrint.size(); i++) {
-			std::cout << " " << toPrint[i].rank().rank();
-		}
+	std::vector<Card> toPrint = cardsPlayed[suit];
+	for (int i = 0; i < toPrint.size(); i++) {
+		std::cout << " " << toPrint[i].rank().rank();
 	}
 }
 
