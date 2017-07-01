@@ -30,12 +30,6 @@ void Deck::print() {
 	}
 }
 
-void Deck::deal(std::vector<std::shared_ptr<Player>> players) {
-	for (int i = 0; i < 4; i++) {
-		players[i]->GetCards(i,*this);
-	}
-}
-
 Deck::Deck() {
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 13; j++) {
@@ -45,4 +39,8 @@ Deck::Deck() {
 			this->cards_.push_back(newCard);
 		}
 	}
+}
+
+void setSeed(int s) {
+	seed = s;
 }

@@ -7,3 +7,7 @@ void HumanPlayer::Discard(Card card) {
 		}
 	}
 }
+
+void HumanPlayer::PlayCard(Card card) {
+
+}
