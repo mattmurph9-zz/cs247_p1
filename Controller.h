@@ -15,7 +15,8 @@ private:
 public:
 	static void printCards(std::vector<Card> cards);
 	static void printRanks(std::vector<Card> cards);
-	static Command queryCommand(Round roundInstance, std::shared_ptr<Player> player, std::vector<Card> legalPlays);
+	static void printStartTurn(Round roundInstance, std::vector<Card> hand, std::vector<Card> legalPlays);
+	static Command queryCommand(Round roundInstance);
 };
 
 #endif

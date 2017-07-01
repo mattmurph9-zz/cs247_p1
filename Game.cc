@@ -19,7 +19,7 @@ void Game::startGame() {
 		players[i]->GetCards(i, deck);
 	}
 
-	Round roundInstance(players);
+	Round roundInstance(players, deck);
 	roundInstance.startRound();
 }
 
@@ -38,11 +38,13 @@ void Game::initPlayers() {
 }
 
 void Game::addHumanPlayer() {
-	players.push_back(std::make_shared<HumanPlayer>());
+	int id = players.size();
+	players.push_back(std::make_shared<HumanPlayer>(id));
 }
 
 void Game::addComputerPlayer() {
-	players.push_back(std::make_shared<ComputerPlayer>());
+	int id = players.size();
+	players.push_back(std::make_shared<ComputerPlayer>(id));
 }
 
 std::shared_ptr<Player> Game::GetPlayer(int playerNum)

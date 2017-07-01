@@ -4,7 +4,7 @@
 #include "Player.h"
 #include "Controller.h"
 
-Round::Round(std::vector<std::shared_ptr<Player>> gamePlayers) :players(gamePlayers) {
+Round::Round(std::vector<std::shared_ptr<Player>> gamePlayers, Deck deck) :players(gamePlayers), deck(deck) {
 	// initialize each suit's cards played
 	for (int i = 0; i < Card::Suit::MAX_SUIT; i++) {
 		cardsPlayed.push_back(std::vector<Card>());
@@ -112,6 +112,10 @@ void Round::playCard(Card card) {
 		i++;
 	}
 	suitsPlayed.insert(suitsPlayed.begin() + i, card);
+}
+
+Deck Round::getDeck() {
+	return deck;
 }
 
 /**

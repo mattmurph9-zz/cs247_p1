@@ -8,11 +8,12 @@ class Round;
 
 class Player {
 private:
+	int id;
 	int score = 0;
 	bool sevenSpade_ = false;
 	void removeFromHand(Card card);
 public:
-	//Player();
+	Player(int id_);
 	bool sevenSpade() { return sevenSpade_; }
 	void GetCards(int i, Deck deck);
 	std::vector<Card> getDiscards();

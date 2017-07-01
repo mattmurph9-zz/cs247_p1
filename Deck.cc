@@ -22,8 +22,8 @@ void Deck::shuffle() {
 } // shuffle
 
 void Deck::print() {
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 12; j++) {
+	for (int i = 0; i < Card::Suit::MAX_SUIT; i++) {
+		for (int j = 0; j < Card::Rank::MAX_RANK - 1; j++) {
 			std::cout << *cards_[i * 13 + j] << " ";
 		}
 		std::cout << *cards_[i * 13 + 12] << std::endl;

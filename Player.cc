@@ -1,6 +1,8 @@
 #include "Player.h"
 #include "Round.h"
 
+Player::Player(int id_): id(id_) {}
+
 void Player::GetCards(int player, Deck deck) {
 	for (int i = 0; i < 13; i++) {
 		Card* card = deck.GetCardAt(player * 13 + i);

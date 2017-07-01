@@ -29,18 +29,28 @@ void Controller::printRanks(std::vector<Card> cards) {
 	}
 }
 
-
-Command Controller::queryCommand(Round roundInstance, std::shared_ptr<Player> player, std::vector<Card> legalPlays) {
+void Controller::printStartTurn(Round roundInstance, std::vector<Card> hand, std::vector<Card> legalPlays) {
 	// prints round status
 	roundInstance.printStatus();
 	// prints player hand and legal plays
-	std::vector<Card> playerHand = player->getHand();
-	std::cout << "Your hand:"; printCards(playerHand); std::cout << std::endl
+	std::cout << "Your hand:"; printCards(hand); std::cout << std::endl
 		<< "Legal plays:"; printCards(legalPlays); std::cout << std::endl;
+}
+
+Command Controller::queryCommand(Round roundInstance) {
 	// waits for user input command
 	Command c;
 	std::cin >> c;
-
+	switch (c.type) {
+	case Command::Type::DECK:
+		roundInstance.getDeck().print();
+		break;
+	case Command::Type::QUIT:
+		exit(0);
+		break;
+	case Command::Type::RAGEQUIT:
+		break;
+	}
 	return c;
 }
 

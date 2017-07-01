@@ -5,6 +5,8 @@
 #include "Command.h"
 #include "Controller.h"
 
+HumanPlayer::HumanPlayer(int id_): Player(id_) {}
+
 /**
  *Lets the user decide what play to make
  *@Return true if turn completed, else false (ragequit)
@@ -12,8 +14,9 @@
 bool HumanPlayer::queryTurn(Round roundInstance, std::vector<Card> legalPlays) {
 	bool validPlayMade = false;
 	while (!validPlayMade) {
+		Controller::printStartTurn(roundInstance, getHand(), legalPlays);
 		// request UI for command input
-		Command playerCommand = Controller::queryCommand();
+		Command playerCommand = Controller::queryCommand(roundInstance);
 		std::vector<Card> playerHand = getHand();
 
 		switch (playerCommand.type) {
