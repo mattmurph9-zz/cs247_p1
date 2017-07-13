@@ -3,6 +3,13 @@
 #include "Round.h"
 #include "Player.h"
 
+//0 to 8 -> 0 to 8, 9 -> T, 10 -> J, 11 -> Q, 12 -> K
+char Controller::getRankChar(int rank) {
+	if (rank <= 8) {
+		return '0' + rank;
+	}
+}
+
 //0->c, 1->d, 2->h, 3->s
 char Controller::getSuitChar(int suit) {
 	switch (suit) {
@@ -19,7 +26,9 @@ char Controller::getSuitChar(int suit) {
 
 void Controller::printCards(std::vector<Card> cards) {
 	for (int i = 0; i < cards.size(); i++) {
-		std::cout << " " << cards[i].rank().rank() << getSuitChar(cards[i].suit().suit());
+		char rankChar = getRankChar(cards[i].rank().rank());
+		char suitChar = getSuitChar(cards[i].suit().suit());
+		std::cout << " " << rankChar << suitChar;
 	}
 }
 

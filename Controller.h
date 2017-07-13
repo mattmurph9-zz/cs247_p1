@@ -11,6 +11,7 @@ class Player;
 
 class Controller {
 private:
+	static char getRankChar(int rank);
 	static char getSuitChar(int suit);
 public:
 	static void printCards(std::vector<Card> cards);

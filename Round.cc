@@ -20,7 +20,7 @@ void Round::startRound() {
 			playerToStart = i;
 		}
 	}
-	std::cout << "A new round begins. It's player " << playerToStart << "'s turn to play." << std::endl;
+	std::cout << "A new round begins. It's player " << playerToStart + 1 << "'s turn to play." << std::endl;
 	// game ends when all 52 cards are played, ie 13 passes of four plays
 	for (int i = 0; i < 13; i++) {
 		for (int j = 0, z = players.size(); j < z; j++) {
