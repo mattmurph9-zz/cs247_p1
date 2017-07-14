@@ -15,7 +15,7 @@
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="button5">
+              <object class="GtkButton" id="human_button">
                 <property name="label" translatable="yes">human</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -28,7 +28,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button6">
+              <object class="GtkButton" id="computer_button">
                 <property name="label" translatable="yes">computer</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -63,8 +63,8 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="0">button5</action-widget>
-      <action-widget response="0">button6</action-widget>
+      <action-widget response="0">human_button</action-widget>
+      <action-widget response="0">computer_button</action-widget>
     </action-widgets>
   </object>
 </interface>

@@ -801,7 +801,7 @@
                         <property name="can_focus">False</property>
                         <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkButton" id="button1">
+                          <object class="GtkButton" id="ragequit_button_1">
                             <property name="label" translatable="yes">Ragequit</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -873,7 +873,7 @@
                         <property name="can_focus">False</property>
                         <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkButton" id="button2">
+                          <object class="GtkButton" id="ragequit_button_2">
                             <property name="label" translatable="yes">Ragequit</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -945,7 +945,7 @@
                         <property name="can_focus">False</property>
                         <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkButton" id="button3">
+                          <object class="GtkButton" id="ragequit_button_3">
                             <property name="label" translatable="yes">Ragequit</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -1017,7 +1017,7 @@
                         <property name="can_focus">False</property>
                         <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkButton" id="button4">
+                          <object class="GtkButton" id="ragequit_button_4">
                             <property name="label" translatable="yes">Ragequit</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>

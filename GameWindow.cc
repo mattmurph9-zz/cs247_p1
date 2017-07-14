@@ -22,6 +22,16 @@ GameWindow::GameWindow(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 	if (m_pQuit) {
 		m_pQuit->signal_activate().connect(sigc::mem_fun(*this, &GameWindow::on_file_quit));
 	}
+	// ragequit buttons
+	for (int i = 0; i < 4; i++)
+	{
+		Gtk::Button* pRqButton = nullptr;
+		m_refGlade->get_widget("ragequit_button_" + i + 1, pRqButton);
+		if (pRqButton) {
+			pRqButton->signal_activate().connect(
+				sigc::bind<int>(sigc::mem_fun(*this, &GameWindow::on_player_ragequit), i));
+		}
+	}
 }
 
 GameWindow::~GameWindow() {}
@@ -30,6 +40,7 @@ GameWindow::~GameWindow() {}
 void GameWindow::on_file_new() {
 	std::cout << "file new" << std::endl;
   // starts new game
+	
 }
 
 void GameWindow::on_file_new_seed() {
@@ -64,4 +75,8 @@ void GameWindow::on_file_new_seed() {
 
 void GameWindow::on_file_quit() {
 	hide();
+}
+
+void GameWindow::on_player_ragequit(int player) {
+	// ragequit
 }

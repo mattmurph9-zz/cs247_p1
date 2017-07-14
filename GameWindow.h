@@ -2,6 +2,7 @@
 #define GTKMM_GAMEWINDOW_H
 
 #include <gtkmm.h>
+#include <vector>
 
 class GameWindow : public Gtk::Window {
 public:
@@ -14,10 +15,12 @@ protected:
 	void on_file_new();
 	void on_file_new_seed();
 	void on_file_quit();
+	void on_player_ragequit(int player);
 
 	Gtk::MenuItem* m_pNew;
 	Gtk::MenuItem* m_pNewSeed;
 	Gtk::MenuItem* m_pQuit;
+	std::vector<Gtk::Button*> m_pRqButtons;
 	Glib::RefPtr<Gtk::Builder> m_refGlade;
 };
 
