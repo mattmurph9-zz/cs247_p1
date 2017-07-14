@@ -5,17 +5,17 @@
 SeedDialog::SeedDialog() {}
 
 SeedDialog::SeedDialog(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
-: Gtk::Window(cobject), m_refGlade(builder) {
+: Gtk::Dialog(cobject), m_refGlade(builder) {
 	// signal handelrs
 	m_refGlade->get_widget("seed_spin", m_pSeed);
 
-	m_refGlade->get_widget("file_new", m_pNew);
-	if (m_pNew) {
-		m_pNew->signal_activate().connect(sigc::mem_fun(*this, &GameWindow::on_file_new));
+	m_refGlade->get_widget("file_new", m_pStart);
+	if (m_pStart) {
+		m_pStart->signal_activate().connect(sigc::mem_fun(*this, &SeedDialog::on_start));
 	}
-	m_refGlade->get_widget("file_quit", m_pQuit);
-	if (m_pQuit) {
-		m_pQuit->signal_activate().connect(sigc::mem_fun(*this, &GameWindow::on_file_quit));
+	m_refGlade->get_widget("file_quit", m_pCancel);
+	if (m_pCancel) {
+		m_pCancel->signal_activate().connect(sigc::mem_fun(*this, &SeedDialog::on_cancel));
 	}
 }
 

@@ -5,9 +5,9 @@
 
 class GameWindow : public Gtk::Window {
 public:
-  GameWindow();
-  GameWindow(BaseObjectType* w, const Glib::RefPtr<Gtk::Builder>& builder);
-  virtual ~GameWindow();
+	GameWindow();
+	GameWindow(BaseObjectType* w, const Glib::RefPtr<Gtk::Builder>& builder);
+	virtual ~GameWindow();
 
 protected:
   //Signal handlers:
@@ -15,6 +15,8 @@ protected:
 	void on_file_new_seed();
 	void on_file_quit();
 
+	Gtk::MenuItem* m_pNew;
+	Gtk::MenuItem* m_pNewSeed;
 	Gtk::MenuItem* m_pQuit;
 	Glib::RefPtr<Gtk::Builder> m_refGlade;
 };

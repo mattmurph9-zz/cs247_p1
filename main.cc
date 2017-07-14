@@ -3,12 +3,6 @@
 #include <gtkmm.h>
 #include "GameWindow.h"
 
-void playStraights()
-{	
-	//Game gameInstance;
-	//gameInstance.startGame();
-}
-
 GameWindow* pWindow = nullptr;
 
 int main (int argc, char **argv)
