@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <ostream>
 #include "HumanPlayer.h"
+#include "ComputerPlayer.h"
 #include "Round.h"
 #include "Command.h"
 #include "Controller.h"
@@ -11,10 +12,10 @@ HumanPlayer::HumanPlayer(int id_): Player(id_) {}
  *Lets the user decide what play to make
  *@Return true if turn completed, else false (ragequit)
  */
-bool HumanPlayer::queryTurn(Round roundInstance, std::vector<Card> legalPlays) {
+bool HumanPlayer::queryTurn(Round &roundInstance, std::vector<Card> legalPlays) {
 	bool validPlayMade = false;
+	Controller::printStartTurn(roundInstance, getHand(), legalPlays);
 	while (!validPlayMade) {
-		Controller::printStartTurn(roundInstance, getHand(), legalPlays);
 		// request UI for command input
 		Command playerCommand = Controller::queryCommand(roundInstance);
 		std::vector<Card> playerHand = getHand();
@@ -40,6 +41,9 @@ bool HumanPlayer::queryTurn(Round roundInstance, std::vector<Card> legalPlays) {
 			}
 			break;
 		case Command::Type::RAGEQUIT:
+			//make current player a computer player
+			roundInstance.Ragequit(this->GetID());
+			//new computer player must complete current turn
 			return false;
 		}
 	}

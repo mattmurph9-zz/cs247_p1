@@ -11,16 +11,25 @@ void Game::startGame() {
 	// deck is preserved throughout rounds. the shuffled deck from a round
 	// is the starting deck for the next
 	Deck deck;
-	deck.shuffle();
-	deck.print();
-
-	// deal
-	for (int i = 0; i < 4; i++) {
-		players[i]->GetCards(i, deck);
+	bool gameOver = false;
+	while (!gameOver) {
+		deck.shuffle();
+		// deal
+		for (int i = 0; i < 4; i++) {
+			players[i]->GetCards(i, deck);
+		}
+		Round roundInstance(players, deck);
+		roundInstance.startRound();
+		for (int i = 0; i < 4; i++) {
+			if (players[i]->GetScore() >= 80) {
+				gameOver = true;
+			}
+		}
 	}
-
-	Round roundInstance(players, deck);
-	roundInstance.startRound();
+	std::vector<int> winners = FindWinners();
+	for (int i = 0; i < winners.size(); i++) {
+		std::cout << "Player " << winners[i] + 1 << " wins!" << std::endl;
+	}
 }
 
 void Game::initPlayers() {
@@ -35,6 +44,23 @@ void Game::initPlayers() {
 			addComputerPlayer();
 		}
 	}
+}
+
+std::vector<int> Game::FindWinners()
+{
+	std::vector<int> winners;
+	int min = 200;
+	for (int i = 0; i < 4; i++) {
+		if (players[i]->GetScore() <= min) {
+			min = players[i]->GetScore();
+		}
+	}
+	for (int i = 0; i < 4; i++) {
+		if (players[i]->GetScore() == min) {
+			winners.push_back(i);
+		}
+	}
+	return winners;
 }
 
 void Game::addHumanPlayer() {

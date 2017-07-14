@@ -6,9 +6,7 @@
 class HumanPlayer : public Player {
 public:
 	HumanPlayer(int id_);
-	//void Discard(Card card) override;
-	//void PlayCard(Card card) override;
-	bool queryTurn(Round roundInstance, std::vector<Card> legalPlays) override;
+	bool queryTurn(Round &roundInstance, std::vector<Card> legalPlays) override;
 };
 
 #endif
