@@ -11,7 +11,7 @@ void Player::GetCards(int player, Deck deck) {
 		if (rank==6&&suit==3) {
 			sevenSpade_ = true;
 		}
-		hand.push_back(card);
+		hand.push_back(*card);
 	}
 }
 
@@ -23,7 +23,7 @@ void Player::Discard(Card card) {
 	removeFromHand(card);
 }
 
-void Player::play(Round roundInstance, Card card) {
+void Player::play(Round &roundInstance, Card card) {
 	// plays to round
 	roundInstance.playCard(card);
 	// remove from hand
@@ -32,7 +32,7 @@ void Player::play(Round roundInstance, Card card) {
 
 void Player::removeFromHand(Card card) {
 	for (int i = 0; i < hand.size(); i++) {
-		if (*hand[i] == card) {
+		if (hand[i] == card) {
 			hand.erase(hand.begin() + i);
 		}
 	}
@@ -42,10 +42,18 @@ std::vector<Card> Player::getDiscards() {
 	return discards;
 }
 
+void Player::printDiscards(){
+	for (int i = 0; i < discards.size(); i++) {
+		std::cout << " " << discards[i];
+	}
+	std::cout << std::endl;
+}
+
+
 std::vector<Card> Player::getHand() {
 	std::vector<Card> ret;
 	for (int i = 0; i < hand.size(); i++) {
-		ret.push_back(*hand[i]);
+		ret.push_back(hand[i]);
 	}
 	return ret;
 }

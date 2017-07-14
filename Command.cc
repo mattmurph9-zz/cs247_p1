@@ -1,6 +1,7 @@
 #include "Command.h"
 #include <cassert>
 #include <sstream>
+#include <iostream>
 using std::istream;
 using std::string;
 using std::stringstream;
@@ -11,7 +12,11 @@ istream & operator>>( istream & in, Command & c ) {
 	c.type = Command::Type::BAD_COMMAND;
 	
 	string str;
-	getline( in, str );
+	//std::getline( std::cin, str );
+	//std::cin >> str;
+
+	in >> std::ws;
+	std::getline(in, str);
 	stringstream ss{ str };
 	
 	string cmd;

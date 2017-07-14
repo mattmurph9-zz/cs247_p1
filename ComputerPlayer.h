@@ -6,7 +6,7 @@
 class ComputerPlayer : public Player {
 public:
 	ComputerPlayer(int id_);
-	bool queryTurn(Round roundInstance, std::vector<Card> legalPlays) override;
+	bool queryTurn(Round &roundInstance, std::vector<Card> legalPlays) override;
 };
 
 #endif
