@@ -1,6 +1,7 @@
 #define _GLIBCXX_USE_CXX11_ABI 0
 #include <iostream>
 #include <gtkmm.h>
+#include "GameWindow.h"
 
 void playStraights()
 {	
@@ -8,7 +9,7 @@ void playStraights()
 	//gameInstance.startGame();
 }
 
-Gtk::Window* pWindow = nullptr;
+GameWindow* pWindow = nullptr;
 
 int main (int argc, char **argv)
 {
@@ -37,9 +38,10 @@ int main (int argc, char **argv)
   }
 
   //Get the GtkBuilder-instantiated Dialog:
-  refBuilder->get_widget("main_window", pWindow);
+  refBuilder->get_widget_derived("main_window", pWindow);
   if(pWindow)
   {
+
     //Get the GtkBuilder-instantiated Button, and connect a signal handler:
     // Gtk::Button* pButton = nullptr;
     // refBuilder->get_widget("quit_button", pButton);
